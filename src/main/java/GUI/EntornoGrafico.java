@@ -28,17 +28,17 @@ public class EntornoGrafico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        primernumero = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        segundonumero = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tercernumero = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        primernumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 primernumero(evt);
             }
@@ -48,7 +48,7 @@ public class EntornoGrafico extends javax.swing.JFrame {
 
         jLabel2.setText("Ingrese el segundo numero");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        segundonumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 segundonumero(evt);
             }
@@ -56,7 +56,7 @@ public class EntornoGrafico extends javax.swing.JFrame {
 
         jLabel3.setText("Ingrese el segundo numero");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        tercernumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tercernumero(evt);
             }
@@ -81,9 +81,9 @@ public class EntornoGrafico extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jLabel2)
                         .addComponent(jLabel1)
-                        .addComponent(jTextField1)
-                        .addComponent(jTextField2)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)))
+                        .addComponent(primernumero)
+                        .addComponent(segundonumero)
+                        .addComponent(tercernumero, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -92,15 +92,15 @@ public class EntornoGrafico extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(primernumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(segundonumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tercernumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(62, Short.MAX_VALUE))
@@ -114,60 +114,60 @@ public class EntornoGrafico extends javax.swing.JFrame {
     }//GEN-LAST:event_primernumero
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String s1 = jTextField1.getText().trim();
-        String s2 = jTextField2.getText().trim();
-        String s3 = jTextField3.getText().trim();
+    String numero1_text = primernumero.getText().trim();
+    String numero2_text = segundonumero.getText().trim();
+    String numero3_text = tercernumero.getText().trim();
 
-        if (s1.isEmpty() || s2.isEmpty() || s3.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor ingresa los tres números.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+    if (numero1_text.isEmpty() || numero2_text.isEmpty() || numero3_text.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor ingresa los tres números.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        double a, b, c;
-        try {
-            a = Double.parseDouble(s1);
-            b = Double.parseDouble(s2);
-            c = Double.parseDouble(s3);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Entrada inválida. Ingresa solo números (ej: 5 o 3.2).", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+    double numero1, numero2, numero3;
+    try {
+        numero1 = Double.parseDouble(numero1_text);
+        numero2 = Double.parseDouble(numero2_text);
+        numero3 = Double.parseDouble(numero3_text);
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Entrada inválida. Ingresa solo números (ej: 5 o 3.2).", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        StringBuilder msg = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
 
-        if (a == b && b == c) {
-            msg.append("Los tres números son iguales.\n");
-        } else if (a == b && a != c) {
-            msg.append("El número 1 y el número 2 son iguales; el número 3 es distinto.\n");
-        } else if (a == c && a != b) {
-            msg.append("El número 1 y el número 3 son iguales; el número 2 es distinto.\n");
-        } else if (b == c && b != a) {
-            msg.append("El número 2 y el número 3 son iguales; el número 1 es distinto.\n");
-        } else {
-            msg.append("Los tres números son diferentes.\n");
-        }
+    if (numero1 == numero2 && numero2 == numero3) {
+        sb.append("Los tres números son iguales.\n");
+    } else if (numero1 == numero2 && numero1 != numero3) {
+        sb.append("El número 1 y el número 2 son iguales; el número 3 es distinto.\n");
+    } else if (numero1 == numero3 && numero1 != numero2) {
+        sb.append("El número 1 y el número 3 son iguales; el número 2 es distinto.\n");
+    } else if (numero2 == numero3 && numero2 != numero1) {
+        sb.append("El número 2 y el número 3 son iguales; el número 1 es distinto.\n");
+    } else {
+        sb.append("Los tres números son diferentes.\n");
+    }
 
-        double mayor = Math.max(a, Math.max(b, c));
-        boolean m1 = (a == mayor);
-        boolean m2 = (b == mayor);
-        boolean m3 = (c == mayor);
+    double mayor = Math.max(numero1, Math.max(numero2, numero3));
+    boolean m1 = (numero1 == mayor);
+    boolean m2 = (numero2 == mayor);
+    boolean m3 = (numero3 == mayor);
 
-        if (m1 && !m2 && !m3) {
-            msg.append(String.format("El mayor es el número 1 (%.2f).", a));
-        } else if (!m1 && m2 && !m3) {
-            msg.append(String.format("El mayor es el número 2 (%.2f).", b));
-        } else if (!m1 && !m2 && m3) {
-            msg.append(String.format("El mayor es el número 3 (%.2f).", c));
-        } else {
-            msg.append("Hay empate por el mayor entre: ");
-            boolean primero = true;
-            if (m1) { msg.append("número 1"); primero = false; }
-            if (m2) { if (!primero) msg.append(", "); msg.append("número 2"); primero = false; }
-            if (m3) { if (!primero) msg.append(", "); msg.append("número 3"); }
-            msg.append(String.format(" (valor = %.2f).", mayor));
-        }
+    if (m1 && !m2 && !m3) {
+        sb.append(String.format("El mayor es el número 1 (%.2f).", numero1));
+    } else if (!m1 && m2 && !m3) {
+        sb.append(String.format("El mayor es el número 2 (%.2f).", numero2));
+    } else if (!m1 && !m2 && m3) {
+        sb.append(String.format("El mayor es el número 3 (%.2f).", numero3));
+    } else {
+        sb.append("Hay empate por el mayor entre: ");
+        boolean primero = true;
+        if (m1) { sb.append("número 1"); primero = false; }
+        if (m2) { if (!primero) sb.append(", "); sb.append("número 2"); primero = false; }
+        if (m3) { if (!primero) sb.append(", "); sb.append("número 3"); }
+        sb.append(String.format(" (valor = %.2f).", mayor));
+    }
 
-        JOptionPane.showMessageDialog(this, msg.toString(), "Resultado", JOptionPane.INFORMATION_MESSAGE);
+    JOptionPane.showMessageDialog(this, sb.toString(), "Resultado", JOptionPane.INFORMATION_MESSAGE);
                 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -219,8 +219,8 @@ public class EntornoGrafico extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField primernumero;
+    private javax.swing.JTextField segundonumero;
+    private javax.swing.JTextField tercernumero;
     // End of variables declaration//GEN-END:variables
 }
